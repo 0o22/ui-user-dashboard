@@ -1,0 +1,10 @@
+* {
+  box-sizing: border-box;
+  text-wrap: balance;
+  border-color: hsl(var(--border));
+}
+
+*::before,
+*::after {
+  box-sizing: inherit;
+}

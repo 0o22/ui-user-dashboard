@@ -1,0 +1,55 @@
+{
+  "root": true,
+  "globals": {
+    "React": "readonly"
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "extends": ["next/core-web-vitals", "eslint:recommended"],
+  "plugins": ["react", "react-hooks"],
+  "rules": {
+    "eqeqeq": ["error", "always"],
+    "curly": ["error", "all"],
+    "dot-notation": "error",
+    "default-case": "error",
+    "no-invalid-this": "error",
+    "no-self-compare": "error",
+    "no-return-assign": "error",
+    "no-param-reassign": "error",
+    "no-useless-return": "warn",
+    "no-lonely-if": "warn",
+    "prefer-destructuring": "warn",
+    "padding-line-between-statements": [
+      // deprecated but still works
+      "error",
+      { "blankLine": "always", "prev": "*", "next": "return" },
+      { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*" },
+      {
+        "blankLine": "any",
+        "prev": ["const", "let", "var"],
+        "next": ["const", "let", "var"]
+      },
+      { "blankLine": "always", "prev": "*", "next": "export" },
+      { "blankLine": "always", "prev": "*", "next": "function" },
+      { "blankLine": "always", "prev": "import", "next": "*" },
+      { "blankLine": "any", "prev": "import", "next": "import" },
+      { "blankLine": "always", "prev": "directive", "next": "*" },
+      { "blankLine": "always", "prev": "block-like", "next": "*" }
+    ],
+    "react/state-in-constructor": ["error", "never"],
+    "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
+    "react/jsx-no-useless-fragment": "error",
+    "react/jsx-no-script-url": "error",
+    "react/jsx-boolean-value": "error",
+    "react/jsx-fragments": "error",
+    "react/button-has-type": "error",
+    "react/no-array-index-key": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}

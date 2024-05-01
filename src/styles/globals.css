@@ -1,0 +1,6 @@
+@import url("tailwindcss/base");
+@import url("tailwindcss/components");
+@import url("tailwindcss/utilities");
+@import url("_reset.css");
+@import url("_normalize.css");
+@import url("index.css");

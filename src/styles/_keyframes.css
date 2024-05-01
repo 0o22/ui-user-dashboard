@@ -1,0 +1,13 @@
+@keyframes loading {
+  0% {
+    @apply bg-light-gray;
+  }
+
+  50% {
+    @apply bg-neutral-gray;
+  }
+
+  100% {
+    @apply bg-light-gray;
+  }
+}
