@@ -81,7 +81,7 @@ export default function Sidebar() {
                 className={cn(
                   `flex gap-3 rounded-lg px-3 py-2 text-muted-foreground
                     transition-all hover:text-primary sm:justify-start`,
-                  { 'bg-muted text-primary': currentPath.startsWith('login') }
+                  { 'bg-muted text-primary': currentPath.includes('login') }
                 )}
                 type="button"
                 onClick={handleLoginClick}
