@@ -28,7 +28,9 @@ export default function Sidebar() {
       return currentPath === path;
     }
 
-    return currentPath.startsWith(path);
+    const preparedPath = path.slice(1);
+
+    return currentPath.startsWith(preparedPath);
   };
 
   const handleLoginClick = () => {
