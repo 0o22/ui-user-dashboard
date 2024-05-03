@@ -26,7 +26,7 @@ export default function AccountTab({ user }: { user: User }) {
         <CardContent className="space-y-2">
           <div className="space-y-1">
             <Label htmlFor="username">Username</Label>
-            <Input id="name" value={user.username} disabled />
+            <Input id="username" value={user.username} disabled />
           </div>
 
           <div className="space-y-1">

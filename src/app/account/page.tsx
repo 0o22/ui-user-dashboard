@@ -1,6 +1,7 @@
+import { authOptions } from '../api/auth/[...nextauth]/options';
 import Account from '@/components/Account/Account';
+import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
-import { cookies } from 'next/headers';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -9,10 +10,10 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const token = cookies().get('next-auth.session-token');
+  const session = await getServerSession(authOptions);
 
-  if (!token) {
-    redirect('/login');
+  if (!session) {
+    return redirect('/login');
   }
 
   return <Account />;

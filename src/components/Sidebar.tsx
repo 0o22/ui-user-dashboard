@@ -21,7 +21,15 @@ export default function Sidebar() {
   const router = useRouter();
   const pathname = usePathname();
 
-  const [currentPath] = pathname.split('/').filter(Boolean);
+  const [currentPath = '/'] = pathname.split('/').filter(Boolean);
+
+  const isCurrentPath = (path: string) => {
+    if (path === '/') {
+      return currentPath === path;
+    }
+
+    return currentPath.startsWith(path);
+  };
 
   const handleLoginClick = () => {
     router.push('/login');
@@ -54,8 +62,8 @@ export default function Sidebar() {
               key={text}
               className={cn(
                 `flex gap-3 rounded-lg px-3 py-2 text-muted-foreground
-                transition-all hover:text-primary sm:justify-start`,
-                { 'bg-muted text-primary': href.includes(currentPath) }
+                  transition-all hover:text-primary sm:justify-start`,
+                { 'bg-muted text-primary': isCurrentPath(href) }
               )}
               href={href}
               onClick={toggleSidebarVisibility}
