@@ -15,12 +15,12 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import DashboardUserRowSkeleton from './DashboardUserRowSkeleton';
+import DashboardUserRowSkeleton from '@/components/Admin/DashboardUserRowSkeleton';
+import DashboardUserRow from '@/components/Admin/DashboardUserRow';
 import UpdateUserDialog from '@/components/Admin/UpdateUser';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { Tabs, TabsContent } from '@/components/ui/tabs';
 import AddUserPopover from '@/components/Admin/AddUser';
-import DashboardUserRow from './DashboardUserRow';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Loader from '@/components/Loader';
@@ -111,7 +111,7 @@ export default function Admin() {
 
   if (status === 'loading' || !currentUser) {
     return (
-      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-primary">
+      <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-primary">
         <Loader size={50} />
       </div>
     );
@@ -131,11 +131,11 @@ export default function Admin() {
 
   return (
     <>
-      <div className="container py-14">
+      <div className="py-14">
         <Tabs defaultValue="all">
           <TabsContent value="all">
             <Card x-chunk="dashboard-06-chunk-0">
-              <CardHeader className="flex flex-col gap-4 sm:flex-row justify-between">
+              <CardHeader className="flex flex-col justify-between gap-4 sm:flex-row">
                 <div>
                   <CardTitle>Users</CardTitle>
 
@@ -188,8 +188,8 @@ export default function Admin() {
               </CardContent>
 
               <CardFooter>
-                <div className="text-xs text-muted-foreground flex gap-2 items-center">
-                  <span className="flex gap-2 items-center">
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <span className="flex items-center gap-2">
                     {isLoading ? <Loader size={14} /> : users.length} users
                   </span>
                 </div>

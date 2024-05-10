@@ -53,12 +53,12 @@ export default function Sidebar() {
     <>
       <aside
         className={cn(
-          `fixed w-full sm:w-[320px] flex-1 h-screen flex justify-center items-center z-[50]
-            bg-card transform transition-transform duration-300 ease-in-out`,
+          `fixed z-[50] flex h-screen w-full flex-1 transform items-center justify-center
+            bg-card transition-transform duration-300 ease-in-out sm:w-[320px]`,
           isOpened ? 'translate-x-0' : '-translate-x-full'
         )}
       >
-        <nav className="grid gap-2 sm:gap-0 w-full items-start text-sm font-medium px-4">
+        <nav className="grid w-full items-start gap-2 px-4 text-sm font-medium sm:gap-0">
           {links.map(({ href, icon: Icon, text }) => (
             <Link
               key={text}
@@ -70,7 +70,7 @@ export default function Sidebar() {
               href={href}
               onClick={toggleSidebarVisibility}
             >
-              <Icon className="h-4 aspect-square" />
+              <Icon className="aspect-square h-4" />
               {text}
             </Link>
           ))}
@@ -82,7 +82,7 @@ export default function Sidebar() {
               type="button"
               onClick={handleLogoutClick}
             >
-              <LogOut className="h-4 aspect-square" />
+              <LogOut className="aspect-square h-4" />
               Logout
             </button>
           ) : (
@@ -96,7 +96,7 @@ export default function Sidebar() {
                 type="button"
                 onClick={handleLoginClick}
               >
-                <LogIn className="h-4 aspect-square" />
+                <LogIn className="aspect-square h-4" />
                 Login
               </button>
             </div>
@@ -105,7 +105,7 @@ export default function Sidebar() {
 
         {width < 640 && (
           <button
-            className="absolute top-4 right-4 text-foreground"
+            className="absolute right-4 top-4 text-foreground"
             type="button"
             onClick={() => setIsOpened(false)}
           >
@@ -114,14 +114,14 @@ export default function Sidebar() {
         )}
 
         <button
-          className="py-4 pr-4 absolute top-1/2 -right-14 h-20 w-14"
+          className="absolute -right-14 top-1/2 h-20 w-14 py-4 pr-4"
           type="button"
           onClick={toggleSidebarVisibility}
         >
           <ChevronLeft
             className={cn(
-              `transform w-full h-full transition-transform duration-300
-                ease-in-out text-muted-foreground`,
+              `h-full w-full transform text-muted-foreground transition-transform
+                duration-300 ease-in-out`,
               { 'rotate-180': !isOpened }
             )}
             color="currentColor"
@@ -132,8 +132,8 @@ export default function Sidebar() {
 
       <button
         className={cn(
-          'fixed inset-0 z-[49] bg-transparent pointer-events-none transition-colors duration-300',
-          { 'bg-black/60 pointer-events-auto': isOpened }
+          'pointer-events-none fixed inset-0 z-[49] bg-transparent transition-colors duration-300',
+          { 'pointer-events-auto bg-black/60': isOpened }
         )}
         type="button"
         onClick={toggleSidebarVisibility}

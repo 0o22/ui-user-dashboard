@@ -35,13 +35,13 @@ export default function Error() {
   return (
     <Alert
       className={cn(
-        `z-[50] fixed w-4/5 left-1/2 -translate-x-1/2 sm:max-w-96
-          bottom-8 bg-warning transition-opacity duration-500`,
+        `fixed bottom-8 left-1/2 z-[50] w-4/5 -translate-x-1/2
+          bg-warning transition-opacity duration-500 sm:max-w-96`,
         isOpened ? 'opacity-100' : 'opacity-0'
       )}
     >
-      <div className="flex justify-between mb-2">
-        <AlertTitle className="leading-4 mb-0">Error</AlertTitle>
+      <div className="mb-2 flex justify-between">
+        <AlertTitle className="mb-0 leading-4">Error</AlertTitle>
 
         <button type="button" onClick={handleCloseError}>
           <X width={20} height={20} aria-hidden />

@@ -103,18 +103,14 @@ export default function AddUser({ setUsers }: Props) {
   return (
     <Popover open={isUserPopoverOpen} onOpenChange={setIsUserPopoverOpen}>
       <PopoverTrigger asChild>
-        <Button
-          className="w-max flex gap-1 font-medium h-8"
-          variant="default"
-          type="button"
-        >
+        <Button className="flex h-8 w-max gap-1 font-medium" type="button">
           <Plus size={16} strokeWidth={2} />
           Add user
         </Button>
       </PopoverTrigger>
 
       <PopoverContent
-        className="max-w-80 w-full"
+        className="w-full max-w-80"
         align={width < 640 ? 'start' : 'end'}
       >
         <form className="grid gap-4" onSubmit={createUser}>
@@ -153,7 +149,7 @@ export default function AddUser({ setUsers }: Props) {
 
             <div>
               <Button
-                className="w-full h-8"
+                className="h-8 w-full"
                 variant="secondary"
                 type="submit"
                 disabled={!newUser.username || isCreatingUser}

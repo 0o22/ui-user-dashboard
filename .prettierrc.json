@@ -1,7 +1,7 @@
 {
   "trailingComma": "es5",
   "singleQuote": true,
-  "plugins": ["prettier-plugin-sort-imports"],
+  "plugins": ["prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"],
   "overrides": [
     {
       "files": ["*.css"],

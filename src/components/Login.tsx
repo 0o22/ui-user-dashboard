@@ -60,8 +60,8 @@ export default function Login() {
     setIsPasswordVisible((currentState) => !currentState);
 
   return (
-    <section className="flex justify-center items-center flex-1 p-4">
-      <Card className="max-w-xl w-full border">
+    <section className="flex flex-1 items-center justify-center p-4">
+      <Card className="w-full max-w-xl border">
         <form onSubmit={formik.handleSubmit}>
           <CardHeader className="space-y-1">
             <CardTitle className="text-2xl">Login to your account</CardTitle>

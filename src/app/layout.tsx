@@ -21,14 +21,14 @@ interface Props {
 
 export default function RootLayout({ children }: Readonly<Props>) {
   return (
-    <html className="scroll-smooth dark">
+    <html className="dark scroll-smooth">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
 
       <body
         className={cn(
-          'relative flex w-screen min-h-screen flex-col bg-background',
+          'relative flex min-h-screen w-screen flex-col bg-background',
           inter.className
         )}
       >
@@ -37,7 +37,7 @@ export default function RootLayout({ children }: Readonly<Props>) {
 
           <main
             id="mainContent"
-            className="relative z-[1] flex flex-auto flex-col overflow-hidden"
+            className="container relative z-[1] flex flex-auto flex-col overflow-hidden"
           >
             {children}
           </main>

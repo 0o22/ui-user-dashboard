@@ -4,7 +4,7 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from '../ui/dropdown-menu';
+} from '@/components/ui/dropdown-menu';
 import { type Dispatch, type SetStateAction, useState } from 'react';
 import { Check, Lock, Minus, MoreHorizontal } from 'lucide-react';
 import { useErrorContext } from '@/contexts/Error/ErrorContext';
@@ -12,9 +12,9 @@ import { getFormattedTime } from '@/helpers/getFormattedTime';
 import { TableCell, TableRow } from '@/components/ui/table';
 import { getAccessIcon } from '@/helpers/getAccessIcon';
 import { capitalize } from '@/helpers/capitalize';
+import { Button } from '@/components/ui/button';
 import { useSession } from 'next-auth/react';
 import Loader from '@/components/Loader';
-import { Button } from '../ui/button';
 import type { User } from 'next-auth';
 
 interface Props {
@@ -79,11 +79,11 @@ export default function DashboardUserRow({
         <span>{user.username}</span>
       </TableCell>
 
-      <TableCell className="hidden md:table-cell text-center">
+      <TableCell className="hidden text-center md:table-cell">
         <span>{capitalize(user.role)}</span>
       </TableCell>
 
-      <TableCell className="hidden md:table-cell text-center">
+      <TableCell className="hidden text-center md:table-cell">
         <span>
           {user.banned ? (
             <Check className="inline" size={20} />
@@ -93,7 +93,7 @@ export default function DashboardUserRow({
         </span>
       </TableCell>
 
-      <TableCell className="hidden md:table-cell text-center">
+      <TableCell className="hidden text-center md:table-cell">
         <span>
           {user.strictPassword ? (
             <Check className="inline" size={20} />
@@ -103,11 +103,11 @@ export default function DashboardUserRow({
         </span>
       </TableCell>
 
-      <TableCell className="hidden md:table-cell text-center">
+      <TableCell className="hidden text-center md:table-cell">
         <AccessIcon className="inline" />
       </TableCell>
 
-      <TableCell className="hidden md:table-cell text-center">
+      <TableCell className="hidden text-center md:table-cell">
         <span>{getFormattedTime(user.createdAt)}</span>
       </TableCell>
 
@@ -139,8 +139,8 @@ export default function DashboardUserRow({
       </TableCell>
 
       {deletingUsername === user.username && (
-        <div className="absolute inset-0 bg-card pointer-events-auto bg-opacity-50">
-          <div className="w-full h-full flex items-center justify-center">
+        <div className="pointer-events-auto absolute inset-0 bg-card bg-opacity-50">
+          <div className="flex h-full w-full items-center justify-center">
             <Loader size={28} />
           </div>
         </div>

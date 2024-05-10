@@ -96,8 +96,8 @@ export default function Register() {
     setIsPasswordVisible((currentState) => !currentState);
 
   return (
-    <div className="flex justify-center items-center flex-1 p-4">
-      <Card className="max-w-xl w-full border ">
+    <div className="flex flex-1 items-center justify-center p-4">
+      <Card className="w-full max-w-xl border ">
         <form onSubmit={formik.handleSubmit}>
           <CardHeader className="space-y-1">
             <CardTitle className="text-2xl">Create an account</CardTitle>
