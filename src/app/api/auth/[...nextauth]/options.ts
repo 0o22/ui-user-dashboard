@@ -3,9 +3,16 @@ import type { NextAuthOptions, User } from 'next-auth';
 import { jwtDecode } from 'jwt-decode';
 
 declare module 'next-auth' {
+  // eslint-disable-next-line no-unused-vars
+  type Role = 'USER' | 'ADMIN';
+
+  // eslint-disable-next-line no-unused-vars
+  type Access = 'FULL' | 'LIMITED' | 'NONE';
+
   interface User {
     username: string;
-    role: string;
+    role: Role;
+    access: Access;
     jwt: string;
     banned: boolean;
     strictPassword: boolean;

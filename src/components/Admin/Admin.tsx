@@ -30,9 +30,10 @@ import { User } from 'next-auth';
 const TABLE_HEADERS = [
   'ID',
   'Name',
+  'Role',
   'Banned',
   'Strict password',
-  'Role',
+  'Access',
   'Created at',
   'Actions',
 ];

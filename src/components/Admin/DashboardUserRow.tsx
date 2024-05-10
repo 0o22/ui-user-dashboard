@@ -10,6 +10,7 @@ import { Check, Lock, Minus, MoreHorizontal } from 'lucide-react';
 import { useErrorContext } from '@/contexts/Error/ErrorContext';
 import { getFormattedTime } from '@/helpers/getFormattedTime';
 import { TableCell, TableRow } from '@/components/ui/table';
+import { getAccessIcon } from '@/helpers/getAccessIcon';
 import { capitalize } from '@/helpers/capitalize';
 import { useSession } from 'next-auth/react';
 import Loader from '@/components/Loader';
@@ -66,6 +67,8 @@ export default function DashboardUserRow({
     setDeletingUsername(null);
   };
 
+  const AccessIcon = getAccessIcon(user.access);
+
   return (
     <TableRow className="relative">
       <TableCell className="text-center font-medium">
@@ -74,6 +77,10 @@ export default function DashboardUserRow({
 
       <TableCell className="text-center">
         <span>{user.username}</span>
+      </TableCell>
+
+      <TableCell className="hidden md:table-cell text-center">
+        <span>{capitalize(user.role)}</span>
       </TableCell>
 
       <TableCell className="hidden md:table-cell text-center">
@@ -97,7 +104,7 @@ export default function DashboardUserRow({
       </TableCell>
 
       <TableCell className="hidden md:table-cell text-center">
-        <span>{capitalize(user.role)}</span>
+        <AccessIcon className="inline" />
       </TableCell>
 
       <TableCell className="hidden md:table-cell text-center">

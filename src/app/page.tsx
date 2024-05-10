@@ -1,3 +1,4 @@
+import Home from '@/components/Home/Home';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -6,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  return null;
+  return <Home />;
 }

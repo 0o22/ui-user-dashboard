@@ -35,6 +35,11 @@ export default function AccountTab({ user }: { user: User }) {
           </div>
 
           <div className="space-y-1">
+            <Label htmlFor="access">Access status</Label>
+            <Input id="access" value={capitalize(user.access)} disabled />
+          </div>
+
+          <div className="space-y-1">
             <Label htmlFor="since">Registration date</Label>
             <Input
               id="since"
