@@ -17,6 +17,7 @@ declare module 'next-auth' {
     banned: boolean;
     strictPassword: boolean;
     createdAt: string;
+    hasPassword: boolean;
   }
 
   // eslint-disable-next-line no-unused-vars

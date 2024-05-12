@@ -28,7 +28,11 @@ import { cn } from '@/lib/utils';
 import { User } from 'next-auth';
 import { useState } from 'react';
 
-export default function ChangePasswordTab({ user }: { user: User }) {
+interface Props {
+  user: User;
+}
+
+export default function ChangePasswordTab({ user }: Props) {
   const { setError } = useErrorContext();
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const formik = useFormik({
@@ -60,7 +64,6 @@ export default function ChangePasswordTab({ user }: { user: User }) {
       return errors;
     },
     onSubmit: async (values) => {
-      console.log('log');
       formik.setSubmitting(true);
 
       const response = await fetch(

@@ -14,7 +14,11 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import type { User } from 'next-auth';
 
-export default function AccountTab({ user }: { user: User }) {
+interface Props {
+  user: User;
+}
+
+export default function AccountTab({ user }: Props) {
   return (
     <TabsContent value="account">
       <Card>

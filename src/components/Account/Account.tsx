@@ -21,7 +21,7 @@ export default function Account() {
   }
 
   return (
-    <div className="flex justify-center px-4 pt-48 sm:pt-60">
+    <div className="flex justify-center px-4 pt-48">
       <Tabs defaultValue="account" className="w-full max-w-[500px]">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="account">Account</TabsTrigger>

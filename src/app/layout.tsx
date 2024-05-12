@@ -1,3 +1,4 @@
+import SessionProvider from '@/components/SessionProvider/SessionProvider';
 import Sidebar from '@/components/Sidebar';
 import Footer from '@/components/Footer';
 import { Inter } from 'next/font/google';
@@ -33,20 +34,22 @@ export default function RootLayout({ children }: Readonly<Props>) {
         )}
       >
         <Providers>
-          <HolyLoader color="#22c55e" showSpinner={false} />
+          <SessionProvider>
+            <HolyLoader color="#22c55e" showSpinner={false} />
 
-          <main
-            id="mainContent"
-            className="container relative z-[1] flex flex-auto flex-col overflow-hidden"
-          >
-            {children}
-          </main>
+            <main
+              id="mainContent"
+              className="container relative z-[1] flex flex-auto flex-col overflow-hidden"
+            >
+              {children}
+            </main>
 
-          <Sidebar />
+            <Sidebar />
 
-          <Footer />
+            <Footer />
 
-          <Error />
+            <Error />
+          </SessionProvider>
         </Providers>
       </body>
     </html>

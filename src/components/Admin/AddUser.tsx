@@ -12,6 +12,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
+import { calculateVerification } from '@/helpers/calculateVerification';
 import { useErrorContext } from '@/contexts/Error/ErrorContext';
 import { useWindowSize } from '@/hooks/useWindowSize';
 import { Switch } from '@/components/ui/switch';
@@ -53,13 +54,20 @@ export default function AddUser({ setUsers }: Props) {
       return;
     }
 
+    const a = Number(process.env.NEXT_PUBLIC_VARIANT);
+    const x = Math.random();
+    const result = calculateVerification(a, x);
+
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
         Authorization: `Bearer ${session.jwt}`,
       },
-      body: JSON.stringify(newUser),
+      body: JSON.stringify({
+        ...newUser,
+        verification: { a, x, result },
+      }),
       next: { revalidate: 0 },
     });
 
