@@ -8,10 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import {
-  validatePassword,
-  validateUsername,
-} from '@/helpers/validation/validate';
+import { validatePassword } from '@/helpers/validation/validatePassword';
+import { validateUsername } from '@/helpers/validation/validateUsername';
 import { useErrorContext } from '@/contexts/Error/ErrorContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';

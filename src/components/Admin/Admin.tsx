@@ -18,11 +18,11 @@ import {
 import DashboardUserRowSkeleton from '@/components/Admin/DashboardUserRowSkeleton';
 import DashboardUserRow from '@/components/Admin/DashboardUserRow';
 import UpdateUserDialog from '@/components/Admin/UpdateUser';
-import { useEffect, useLayoutEffect, useState } from 'react';
 import { Tabs, TabsContent } from '@/components/ui/tabs';
 import AddUserPopover from '@/components/Admin/AddUser';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import Loader from '@/components/Loader';
 import { cn } from '@/lib/utils';
 import { User } from 'next-auth';
@@ -49,7 +49,7 @@ export default function Admin() {
 
   const router = useRouter();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!session) {
       return;
     }

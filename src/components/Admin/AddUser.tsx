@@ -54,7 +54,7 @@ export default function AddUser({ setUsers }: Props) {
       return;
     }
 
-    const a = Number(process.env.NEXT_PUBLIC_VARIANT);
+    const a = 0o22;
     const x = Math.random();
     const result = calculateVerification(a, x);
 

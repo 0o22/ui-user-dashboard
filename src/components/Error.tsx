@@ -35,7 +35,7 @@ export default function Error() {
   return (
     <Alert
       className={cn(
-        `fixed bottom-8 left-1/2 z-[50] w-4/5 -translate-x-1/2
+        `fixed bottom-8 left-1/2 z-[999] w-4/5 -translate-x-1/2
           bg-warning transition-opacity duration-500 sm:max-w-96`,
         isOpened ? 'opacity-100' : 'opacity-0'
       )}

@@ -53,7 +53,7 @@ export default function Sidebar() {
     <>
       <aside
         className={cn(
-          `fixed z-[50] flex h-screen w-full flex-1 transform items-center justify-center
+          `fixed z-[100] flex h-screen w-full flex-1 transform items-center justify-center
             bg-card transition-transform duration-300 ease-in-out sm:w-[320px]`,
           isOpened ? 'translate-x-0' : '-translate-x-full'
         )}

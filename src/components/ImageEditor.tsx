@@ -1,13 +1,20 @@
 'use client';
 
 import {
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+  Dispatch,
+  SetStateAction,
+} from 'react';
+import {
   FlipHorizontal,
   FlipVertical,
   RotateCcw,
   ZoomIn,
   ZoomOut,
 } from 'lucide-react';
-import { useEffect, useRef, useState, useCallback } from 'react';
 import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -30,6 +37,8 @@ interface EditorData {
 
 interface Props {
   image: Image | null;
+  hasAccess: boolean;
+  setIsDialogOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 const initialEditorData: EditorData = {
@@ -43,7 +52,11 @@ const initialEditorData: EditorData = {
   zoom: 1,
 };
 
-export default function ImageEditor({ image }: Props) {
+export default function ImageEditor({
+  image,
+  hasAccess,
+  setIsDialogOpen,
+}: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const [editorData, setEditorData] = useState<EditorData>(initialEditorData);
@@ -216,120 +229,134 @@ export default function ImageEditor({ image }: Props) {
             id="canvas"
           />
 
-          <div className="flex flex-col items-center">
-            <div className="flex w-full flex-col gap-3 md:w-4/5">
-              <div className="flex items-center gap-4">
-                <Label className="w-full max-w-20" htmlFor="rotateSlider">
-                  Rotate:
-                </Label>
-
-                <Slider
-                  id="rotateSlider"
-                  className="w-full"
-                  defaultValue={[0]}
-                  min={-180}
-                  max={180}
-                  step={1}
-                  value={[editorData.rotate]}
-                  onValueChange={rotate}
-                />
+          <div className="relative flex flex-col gap-6">
+            {!hasAccess && (
+              <div className="absolute z-[1] -mt-4 flex h-[250px] w-full items-center justify-center backdrop-blur-sm">
+                <Button
+                  className="translate-y-12 transform"
+                  type="button"
+                  onClick={() => setIsDialogOpen(true)}
+                >
+                  Unlock full version
+                </Button>
               </div>
+            )}
 
-              <div className="flex items-center gap-4">
-                <Label className="w-full max-w-20" htmlFor="brightnessSlider">
-                  Brightness:
-                </Label>
+            <div className="flex flex-col items-center">
+              <div className="flex w-full flex-col gap-3 md:w-4/5">
+                <div className="flex items-center gap-4">
+                  <Label className="w-full max-w-20" htmlFor="brightnessSlider">
+                    Brightness:
+                  </Label>
 
-                <Slider
-                  id="brightnessSlider"
-                  className="w-full"
-                  defaultValue={[100]}
-                  max={200}
-                  step={1}
-                  value={[editorData.brightness]}
-                  onValueChange={brightness}
-                />
-              </div>
+                  <Slider
+                    id="brightnessSlider"
+                    className="w-full"
+                    defaultValue={[100]}
+                    max={200}
+                    step={1}
+                    value={[editorData.brightness]}
+                    onValueChange={brightness}
+                  />
+                </div>
 
-              <div className="flex items-center gap-4">
-                <Label className="w-full max-w-20" htmlFor="contrastSlider">
-                  Contrast:
-                </Label>
+                <div className="flex items-center gap-4">
+                  <Label className="w-full max-w-20" htmlFor="contrastSlider">
+                    Contrast:
+                  </Label>
 
-                <Slider
-                  id="contrastSlider"
-                  className="w-full"
-                  defaultValue={[100]}
-                  max={200}
-                  step={1}
-                  value={[editorData.contrast]}
-                  onValueChange={contrast}
-                />
-              </div>
+                  <Slider
+                    id="contrastSlider"
+                    className="w-full"
+                    defaultValue={[100]}
+                    max={200}
+                    step={1}
+                    value={[editorData.contrast]}
+                    onValueChange={contrast}
+                  />
+                </div>
 
-              <div className="flex items-center gap-4">
-                <Label className="w-full max-w-20" htmlFor="saturateSlider">
-                  Saturate:
-                </Label>
+                <div className="flex items-center gap-4">
+                  <Label className="w-full max-w-20" htmlFor="saturateSlider">
+                    Saturate:
+                  </Label>
 
-                <Slider
-                  id="saturateSlider"
-                  className="w-full"
-                  defaultValue={[100]}
-                  max={200}
-                  step={1}
-                  value={[editorData.saturate]}
-                  onValueChange={saturate}
-                />
-              </div>
+                  <Slider
+                    id="saturateSlider"
+                    className="w-full"
+                    defaultValue={[100]}
+                    max={200}
+                    step={1}
+                    value={[editorData.saturate]}
+                    onValueChange={saturate}
+                  />
+                </div>
 
-              <div className="flex items-center gap-4">
-                <Label className="w-full max-w-20" htmlFor="grayscaleSlider">
-                  Grayscale:
-                </Label>
+                <div className="flex items-center gap-4">
+                  <Label className="w-full max-w-20" htmlFor="grayscaleSlider">
+                    Grayscale:
+                  </Label>
 
-                <Slider
-                  id="grayscaleSlider"
-                  className="w-full"
-                  defaultValue={[0]}
-                  max={100}
-                  step={1}
-                  value={[editorData.grayscale]}
-                  onValueChange={grayscale}
-                />
+                  <Slider
+                    id="grayscaleSlider"
+                    className="w-full"
+                    defaultValue={[0]}
+                    max={100}
+                    step={1}
+                    value={[editorData.grayscale]}
+                    onValueChange={grayscale}
+                  />
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <Label className="w-full max-w-20" htmlFor="rotateSlider">
+                    Rotate:
+                  </Label>
+
+                  <Slider
+                    id="rotateSlider"
+                    className="w-full"
+                    defaultValue={[0]}
+                    min={-180}
+                    max={180}
+                    step={1}
+                    value={[editorData.rotate]}
+                    onValueChange={rotate}
+                  />
+                </div>
               </div>
             </div>
+
+            <div className="flex justify-center gap-2">
+              <button className="p-1" type="button" onClick={reset}>
+                <RotateCcw />
+              </button>
+
+              <button className="p-1" type="button" onClick={flipHorizontal}>
+                <FlipHorizontal />
+              </button>
+
+              <button className="p-1" type="button" onClick={flipVertical}>
+                <FlipVertical />
+              </button>
+
+              <button className="p-1" type="button" onClick={zoomIn}>
+                <ZoomIn />
+              </button>
+
+              <button className="p-1" type="button" onClick={zoomOut}>
+                <ZoomOut />
+              </button>
+            </div>
+
+            <Button
+              className="mx-auto h-8 w-1/5"
+              type="button"
+              onClick={() => saveImage()}
+            >
+              Save
+            </Button>
           </div>
-
-          <div className="flex justify-center gap-2">
-            <button className="p-1" type="button" onClick={reset}>
-              <RotateCcw />
-            </button>
-
-            <button className="p-1" type="button" onClick={flipHorizontal}>
-              <FlipHorizontal />
-            </button>
-
-            <button className="p-1" type="button" onClick={flipVertical}>
-              <FlipVertical />
-            </button>
-
-            <button className="p-1" type="button" onClick={zoomIn}>
-              <ZoomIn />
-            </button>
-
-            <button className="p-1" type="button" onClick={zoomOut}>
-              <ZoomOut />
-            </button>
-          </div>
-
-          <Button
-            className="mx-auto h-8 w-1/5"
-            type="button"
-            onClick={() => saveImage()}
-          >
-            Save
-          </Button>
         </div>
       </div>
     </div>

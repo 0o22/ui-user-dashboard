@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { validatePassword } from '@/helpers/validation/validate';
+import { validatePassword } from '@/helpers/validation/validatePassword';
 import { useErrorContext } from '@/contexts/Error/ErrorContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -163,7 +163,7 @@ export default function NewPasswordDialog({ user }: Props) {
 
           <CardFooter>
             <Button
-              className="w-full sm:w-32"
+              className="w-full sm:max-w-32"
               type="submit"
               disabled={isSubmitDisabled || formik.isSubmitting}
             >

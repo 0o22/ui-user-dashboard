@@ -16,7 +16,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { validatePassword } from '@/helpers/validation/validate';
+import { validatePassword } from '@/helpers/validation/validatePassword';
 import { useErrorContext } from '@/contexts/Error/ErrorContext';
 import { TabsContent } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';

@@ -1,5 +1,7 @@
+import { Rule } from './types';
+
 // Contain at least one digit and one special character
-export function validatePasswordVariant7(password: string) {
+export function validatePassword(password: string): Rule {
   let hasDigit = false;
   let hasSpecial = false;
 
@@ -13,5 +15,8 @@ export function validatePasswordVariant7(password: string) {
     }
   }
 
-  return hasDigit && hasSpecial;
+  return {
+    valid: hasDigit && hasSpecial,
+    rule: 'Password must contain at least one digit and one special character',
+  };
 }
